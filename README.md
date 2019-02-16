@@ -8,7 +8,7 @@
 docker-compose up -d
 ```
 
-浏览器访问地址 http://ip:9090/install.php
+浏览器访问地址 http://ip:9090
 
 根据部署方式修改访问的ip或者端口号
 
