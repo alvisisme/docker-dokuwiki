@@ -12,6 +12,10 @@ docker-compose up -d
 
 根据部署方式修改访问的ip或者端口号
 
+默认登录帐号密码
+
+**admin:admin123456**
+
 ## 项目依赖
 
 * dokuwiki 2018-04-22b "Greebo"
