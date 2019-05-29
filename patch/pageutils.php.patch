@@ -1,0 +1,11 @@
+721,722c721,722
+<     $file = urlencode($file);
+<     $file = str_replace('%2F','/',$file);
+---
+>     //$file = urlencode($file);
+>     //$file = str_replace('%2F','/',$file);
+745c745,746
+<     return urldecode($file);
+---
+>     //return urldecode($file);
+>     return $file;

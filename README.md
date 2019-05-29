@@ -5,6 +5,7 @@
 ## 如何使用
 
 ```shell
+bash setup.sh
 docker-compose up -d
 ```
 
@@ -59,8 +60,6 @@ docker-compose up -d
 3. 修改了wiki的默认参数
 
     对比 **dokuwiki/conf/dokuwiki.php**（全部的默认参数） 和 **dokuwiki/conf/local.php**（修改的定制参数）
-
-
 
 ## 参考引用
 
