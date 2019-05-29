@@ -67,3 +67,4 @@ docker-compose up -d
 * [dokuwiki issues:Official dokuwiki docker image](https://github.com/splitbrain/dokuwiki/issues/1896)
 * [Installation DokuWiki under Ubuntu](https://www.dokuwiki.org/install:ubuntu)
 * [Dokuwiki中文网](http://www.dokuwiki.com.cn/)
+* [Dukowiki实现本地文件中文命名](https://www.somnus.top/dukowiki-filename/)
