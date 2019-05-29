@@ -20,7 +20,50 @@ docker-compose up -d
 
 * dokuwiki 2018-04-22b "Greebo"
 
+## 修订记录
+
+1. 移除多语言支持，仅保留中文和英文
+
+    删除 **dokuwiki/inc/lang** 对应目录。
+
+2. 新建中文页面时文件名直接保存为中文，不再进行转码
+
+    修改 **dokuwiki/inc/pageutils.php** 文件，
+
+    将 `utf8_encodeFN` 返回语句从
+
+    ```php
+    $file = urlencode($file);
+    $file = str_replace('%2F','/',$file);
+    return $file;
+    ```
+
+    改为了
+
+    ```php
+    return $file;
+    ```
+
+    将 `utf8_decodeFN` 返回语句从
+
+    ```php
+    return urldecode($file);
+    ```
+
+    改为了
+
+    ```php
+    return $file;
+    ```
+
+3. 修改了wiki的默认参数
+
+    对比 **dokuwiki/conf/dokuwiki.php**（全部的默认参数） 和 **dokuwiki/conf/local.php**（修改的定制参数）
+
+
+
 ## 参考引用
 
 * [dokuwiki issues:Official dokuwiki docker image](https://github.com/splitbrain/dokuwiki/issues/1896)
 * [Installation DokuWiki under Ubuntu](https://www.dokuwiki.org/install:ubuntu)
+* [Dokuwiki中文网](http://www.dokuwiki.com.cn/)
