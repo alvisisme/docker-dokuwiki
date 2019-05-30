@@ -5,7 +5,6 @@
 ## 如何使用
 
 ```shell
-bash setup.sh
 docker-compose up -d
 ```
 

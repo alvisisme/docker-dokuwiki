@@ -6,5 +6,3 @@ services:
     container_name: wiki
     ports:
       - 9090:80
-    volumes:
-      - ./dokuwiki:/var/www/wiki
