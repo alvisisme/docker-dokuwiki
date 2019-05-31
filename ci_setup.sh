@@ -8,6 +8,7 @@ DOKUWIKI_PATH="/var/www/html"
 
 function start_wiki {
 if [ -f $DOKUWIKI_PATH/install.php ];then
+    echo "Ready to start dokuwki server"
     chown -R www-data $DOKUWIKI_PATH
     #
     # 删除install.php
@@ -17,6 +18,8 @@ if [ -f $DOKUWIKI_PATH/install.php ];then
     service apache2 restart
     tail -f /var/log/apache2/error.log
     exit 1
+else
+    echo "Ready to setup dokuwki"
 fi
 }
 
@@ -68,7 +71,7 @@ cp config/users.auth.php $DOKUWIKI_PATH/conf/users.auth.php
 #
 # 创建默认首页
 #
-echo "====== 首页 ======" > $DOKUWIKI_PATH/data/pages/start.txt
+echo $DOKUWIKI_PATH/data/pages/wiki/welcome.txt > $DOKUWIKI_PATH/data/pages/start.txt
 rm -f $DOKUWIKI_PATH/index.html
 
 #=======================
