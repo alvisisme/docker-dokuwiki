@@ -31,10 +31,10 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 #     && chmod 755 /app
 
 COPY ci_setup.sh ci_setup.sh
-RUN /bin/bash ci_setup.sh
 COPY patch patch
 COPY config config
 COPY pages pages
+RUN /bin/bash ci_setup.sh
 
 COPY apache2.conf /etc/apache2/apache2.conf
 EXPOSE 80
