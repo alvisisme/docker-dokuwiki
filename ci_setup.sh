@@ -16,8 +16,7 @@ if [ -f $DOKUWIKI_PATH/install.php ];then
     #
     rm $DOKUWIKI_PATH/install.php
     service apache2 restart
-    tail -f /var/log/apache2/error.log
-    exit 1
+    exit 0
 else
     echo "Ready to setup dokuwki"
 fi
@@ -71,7 +70,10 @@ cp config/users.auth.php $DOKUWIKI_PATH/conf/users.auth.php
 #
 # 创建默认首页
 #
-cp $DOKUWIKI_PATH/data/pages/wiki/welcome.txt > $DOKUWIKI_PATH/data/pages/start.txt
+cp pages/welcome.txt $DOKUWIKI_PATH/data/pages/start.txt
+cp pages/welcome.txt $DOKUWIKI_PATH/data/pages/wiki/welcome.txt
+cp pages/syntax.txt $DOKUWIKI_PATH/data/pages/wiki/syntax.txt
+cp pages/dokuwiki.txt $DOKUWIKI_PATH/data/pages/wiki/dokuwiki.txt
 rm -f $DOKUWIKI_PATH/index.html
 
 #=======================
@@ -113,6 +115,16 @@ mv indexmenu-master $DOKUWIKI_PATH/lib/plugins/indexmenu
 fi
 
 #
+# nosidebar Plugin(https://www.dokuwiki.org/plugin:nosidebar)
+# 可以解决 IndexMenu 插件的id冲突错误的问题，将 https://github.com/samuelet/indexmenu/issues/67
+#
+if [ ! -d $DOKUWIKI_PATH/lib/plugins/nosidebar ]; then
+wget -nv https://codeload.github.com/lupo49/dokuwiki-plugin-nosidebar/legacy.zip/master -O dokuwiki-plugin-nosidebar.zip
+unzip dokuwiki-plugin-nosidebar.zip > /dev/null
+mv lupo49-dokuwiki-plugin-nosidebar-8bd4ab6 $DOKUWIKI_PATH/lib/plugins/nosidebar
+fi
+
+#
 # AddNewPage Plugin(https://www.dokuwiki.org/plugin:addnewpage)
 #
 if [ ! -d $DOKUWIKI_PATH/lib/plugins/addnewpage ]; then
@@ -148,25 +160,9 @@ tar zxf dokuwiki-plugin-imgpaste.tar.gz > /dev/null
 mv dokuwiki-plugin-imgpaste-2018-05-03 $DOKUWIKI_PATH/lib/plugins/imgpaste
 fi
 
-# 下面两个插件涉及php composer的问题
 #
-# Markdown Page Plugin(https://www.dokuwiki.org/plugin:mdpage)
+# 清理安装包
 #
-# if [ ! -d $DOKUWIKI_PATH/lib/plugins/mdpage ]; then
-# wget -nv https://github.com/mizunashi-mana/dokuwiki-plugin-mdpage/archive/v1.0.3.tar.gz -O dokuwiki-plugin-mdpage.tar.gz
-# tar zxf dokuwiki-plugin-mdpage.tar.gz > /dev/null
-# mv dokuwiki-plugin-mdpage-1.0.3 $DOKUWIKI_PATH/lib/plugins/mdpage
-# fi
-
-#
-# DW2PDF Plugin(https://www.dokuwiki.org/plugin:dw2pdf)
-#
-# if [ ! -d $DOKUWIKI_PATH/lib/plugins/dw2pdf ]; then
-# wget -nv https://github.com/splitbrain/dokuwiki-plugin-dw2pdf/archive/2019-03-20.tar.gz -O dokuwiki-plugin-dw2pdf.tar.gz
-# tar zxf dokuwiki-plugin-dw2pdf.tar.gz
-# mv dokuwiki-plugin-dw2pdf-2019-03-20 $DOKUWIKI_PATH/lib/plugins/dw2pdf
-# fi
-
 rm *.tar.gz
 rm *.zip
 

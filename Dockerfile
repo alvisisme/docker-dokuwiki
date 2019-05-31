@@ -30,11 +30,13 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 #     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
 #     && chmod 755 /app
 
-COPY ci_setup.sh /ci_setup.sh
-COPY patch /patch
-COPY config /config
+COPY ci_setup.sh ci_setup.sh
+RUN /bin/bash ci_setup.sh
+COPY patch patch
+COPY config config
+COPY pages pages
 
 COPY apache2.conf /etc/apache2/apache2.conf
 EXPOSE 80
 VOLUME [ "/var/www/html" ]
-CMD [ "/bin/bash", "/ci_setup.sh" ]
+CMD [ "tail", "-f", "/var/log/apache2/error.log" ]
