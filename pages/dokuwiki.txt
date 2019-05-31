@@ -1,14 +1,15 @@
 ====== DokuWiki ======
 
-[[doku>wiki:dokuwiki|{{wiki:dokuwiki-128.png }}]] DokuWiki 是一个易于使用且多功能的开源 [[wp>wiki]] 软件，无需数据库， 因纯净可读的 [[wiki:syntax]] 深受用户喜爱， 
-易于维护，备份和集成使它成为管理员们的最爱，内置[[doku>acl|访问控制]]和[[doku>auth|接入验证]]使得 DokuWiki 在企业领域尤其好用，有充满获得的社区贡献的大量 [[doku>plugins]] 允许
-在传统维基上拓展了大量用户使用场景案例。
+[[doku>wiki:dokuwiki|{{wiki:dokuwiki-128.png }}]] DokuWiki 是一个易于使用且多功能的开源[[wp>wiki|维基]]软件，无需数据库， 
+因纯净可读的[[wiki:syntax|语法]]深受用户喜爱， 
+易于维护,备份和集成使它成为管理员们的最爱，内置[[doku>acl|访问控制]]和[[doku>auth|接入验证]]使得 DokuWiki 在企业领域变得实用，由充满活力的社区贡献的大量[[doku>plugins|插件]]允许
+在传统维基上大大拓展了用户使用场景。
 
-阅读 [[doku>manual|DokuWiki 指南]] 来释放 DokuWiki 的强大功能。
+阅读[[doku>manual|DokuWiki 指南]]来释放 DokuWiki 的强大功能。
 
-===== Download =====
+===== 下载 =====
 
-DokuWiki 可以在 http://download.dokuwiki.org/ 上找到。
+可以在 http://download.dokuwiki.org/ 上找到 DokuWiki。
 
 
 ===== 阅读更多 =====
@@ -57,7 +58,7 @@ DokuWiki 可以在 http://download.dokuwiki.org/ 上找到。
   * [[doku>thanks|一些谦逊的感谢]]
 
 
-===== Copyright =====
+===== 版权 =====
 
 2004-2015 (c) Andreas Gohr <andi@splitbrain.org>((请不要联系我来寻求帮助支持 -- 使用 [[doku>mailinglist]] 或者 [[http://forum.dokuwiki.org|论坛]])) 和 DokuWiki 社区。
 

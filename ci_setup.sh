@@ -68,12 +68,14 @@ cp config/acl.auth.php $DOKUWIKI_PATH/conf/acl.auth.php
 cp config/users.auth.php $DOKUWIKI_PATH/conf/users.auth.php
 
 #
-# 创建默认首页
+# 创建默认页
 #
+cp pages/sidebar.txt $DOKUWIKI_PATH/data/pages/sidebar.txt
 cp pages/welcome.txt $DOKUWIKI_PATH/data/pages/start.txt
 cp pages/welcome.txt $DOKUWIKI_PATH/data/pages/wiki/welcome.txt
 cp pages/syntax.txt $DOKUWIKI_PATH/data/pages/wiki/syntax.txt
 cp pages/dokuwiki.txt $DOKUWIKI_PATH/data/pages/wiki/dokuwiki.txt
+
 rm -f $DOKUWIKI_PATH/index.html
 
 #=======================
