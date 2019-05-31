@@ -71,7 +71,7 @@ cp config/users.auth.php $DOKUWIKI_PATH/conf/users.auth.php
 #
 # 创建默认首页
 #
-echo $DOKUWIKI_PATH/data/pages/wiki/welcome.txt > $DOKUWIKI_PATH/data/pages/start.txt
+cp $DOKUWIKI_PATH/data/pages/wiki/welcome.txt > $DOKUWIKI_PATH/data/pages/start.txt
 rm -f $DOKUWIKI_PATH/index.html
 
 #=======================
