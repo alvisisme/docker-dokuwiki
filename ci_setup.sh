@@ -163,6 +163,26 @@ mv dokuwiki-plugin-imgpaste-2018-05-03 $DOKUWIKI_PATH/lib/plugins/imgpaste
 fi
 
 #
+# SMTP Plugin(https://www.dokuwiki.org/plugin:smtp)
+#
+if [ ! -d $DOKUWIKI_PATH/lib/plugins/smtp ]; then
+wget -nv https://github.com/splitbrain/dokuwiki-plugin-smtp/archive/2019-03-21.tar.gz -O dokuwiki-plugin-smtp.tar.gz
+tar zxf dokuwiki-plugin-smtp.tar.gz > /dev/null
+mv dokuwiki-plugin-smtp-2019-03-21 $DOKUWIKI_PATH/lib/plugins/smtp
+fi
+
+
+#
+# upgrade Plugin(https://www.dokuwiki.org/plugin:upgrade)
+#
+if [ ! -d $DOKUWIKI_PATH/lib/plugins/upgrade ]; then
+wget -nv https://github.com/splitbrain/dokuwiki-plugin-upgrade/archive/2019-04-24.tar.gz -O dokuwiki-plugin-upgrade.tar.gz
+tar zxf dokuwiki-plugin-upgrade.tar.gz > /dev/null
+mv dokuwiki-plugin-upgrade-2019-04-24 $DOKUWIKI_PATH/lib/plugins/upgrade
+fi
+
+
+#
 # 清理安装包
 #
 rm *.tar.gz
