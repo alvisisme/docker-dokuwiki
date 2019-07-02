@@ -11,6 +11,7 @@ RUN apt-get update \
         php-mbstring \
         php-gd \
         ca-certificates \
+	net-tools \
         wget \
         unzip \
         curl \
@@ -30,13 +31,12 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 #     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
 #     && chmod 755 /app
 
+COPY apache2.conf /etc/apache2/apache2.conf
 COPY ci_setup.sh ci_setup.sh
 COPY patch patch
 COPY config config
 COPY pages pages
-RUN /bin/bash ci_setup.sh
 
-COPY apache2.conf /etc/apache2/apache2.conf
 EXPOSE 80
 VOLUME [ "/var/www/html" ]
-CMD [ "tail", "-f", "/var/log/apache2/error.log" ]
+CMD [ "/bin/bash", "/ci_setup.sh" ]

@@ -5,25 +5,7 @@ set -e
 DOKUWIKI_VERSION="release_stable_2018-04-22b"
 DOKUWIKI_PATH="/var/www/html"
 
-
-function start_wiki {
-if [ -f $DOKUWIKI_PATH/install.php ];then
-    echo "Ready to start dokuwki server"
-    chown -R www-data $DOKUWIKI_PATH
-    #
-    # 删除install.php
-    # 重要：脚本通过该文件来判断是否为第一次安装
-    #
-    rm $DOKUWIKI_PATH/install.php
-    service apache2 restart
-    exit 0
-else
-    echo "Ready to setup dokuwki"
-fi
-}
-
-start_wiki
-
+function setup_wiki {
 #
 # 下载安装包
 #
@@ -181,11 +163,29 @@ tar zxf dokuwiki-plugin-upgrade.tar.gz > /dev/null
 mv dokuwiki-plugin-upgrade-2019-04-24 $DOKUWIKI_PATH/lib/plugins/upgrade
 fi
 
-
+# 删除install.php
+rm $DOKUWIKI_PATH/install.php
 #
 # 清理安装包
 #
 rm *.tar.gz
 rm *.zip
+}
 
-start_wiki
+
+################################################
+#              Setup Wiki
+################################################
+service apache2 restart
+
+if [ ! -f $DOKUWIKI_PATH/index.php ];then
+    echo "Ready to setup dokuwki"
+    setup_wiki
+fi
+   
+echo "Ready to start dokuwki server"
+chown -R www-data $DOKUWIKI_PATH
+service apache2 restart
+echo "Wiki service is running"
+tail -f /var/log/apache2/error.log
+

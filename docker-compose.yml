@@ -6,3 +6,6 @@ services:
     container_name: wiki
     ports:
       - 9090:80
+    volumes:
+      - /mnt/data/wiki:/var/www/html
+
