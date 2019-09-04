@@ -1,30 +1,30 @@
-====== Welcome to your new DokuWiki ======
+====== 欢迎使用 DokuWiki ======
 
-Congratulations, your wiki is now up and running. Here are a few more tips to get you started.
+恭喜，你的维基已经启用并运行，这里有一些小提示可以帮助你开始使用本维基。
 
-Enjoy your work with DokuWiki,\\
--- the developers
+和本维基一起享受工作的乐趣吧,\\
+-- 开发者们
 
-===== Create your first pages =====
+===== 创建你的第一个页面 =====
 
-Your wiki needs to have a start page. As long as it doesn't exist, this link will be red: [[:start]].
+你的维基需要一个开始页面，只要这页面不存在，页面链接就会显示成红色: [[:start]]。
 
-Go on, follow that link and create the page. If you need help with using the syntax you can always refer to the [[wiki:syntax|syntax page]].
+接下来，跟随该链接创建这个页面，如果你需要使用语法帮助，你可以经常参考[[wiki:syntax|语法页面]]。
 
-You might also want to use a sidebar. To create it, just edit the [[:sidebar]] page. Everything in that page will be shown in a margin column on the side. Read our [[doku>faq:sidebar|FAQ on sidebars]] to learn more.
+你也许还想使用侧边栏，编辑[[:sidebar]]页面来创建它，这个页面的一切都会显示在侧面的竖列边上，阅读我们的[[doku>faq:sidebar|侧边栏常见问题]]来了解更多。
 
-Please be aware that not all templates support sidebars.
+请注意不是所有的模板都支持侧边栏。
 
-===== Customize your Wiki =====
+===== 定制你的维基 =====
 
-Once you're comfortable with creating and editing pages you might want to have a look at the [[this>doku.php?do=admin&page=config|configuration settings]] (be sure to login as superuser first).
+一旦你熟悉了创建和编辑页面，你也许想看看[[this>doku.php?do=admin&page=config|配置项设置]]（确保先已超级用户登录）。
 
-You may also want to see what [[doku>plugins|plugins]] and [[doku>templates|templates]] are available at DokuWiki.org to extend the functionality and looks of your DokuWiki installation.
+你可能还想看看 DokuWiki.org 上的[[doku>plugins|插件]]和[[doku>templates|模板]]页面上有些什么内容来拓展你安装的DokuWiki的功能和样式。
 
-===== Join the Community =====
+===== 加入社区 =====
 
-DokuWiki is an Open Source project that thrives through user contributions. A good way to stay informed on what's going on and to get useful tips in using DokuWiki is subscribing to the [[doku>newsletter]].
+DokuWiki 是一个通过用户贡献而蓬勃发展的开源工程，获得 DokuWiki 最新进展和有用小提示的一种好的方法是订阅[[doku>newsletter]]。
 
-The [[http://forum.dokuwiki.org|DokuWiki User Forum]] is an excellent way to get in contact with other DokuWiki users and is just one of the many ways to get [[doku>faq:support|support]].
+[[http://forum.dokuwiki.org|DokuWiki 用户论坛]]是一个极好的与其他 DokuWiki 用户联系的地方，也是获得[[doku>faq:support|支持]]的许多方法中的一种。
 
-Of course we'd be more than happy to have you [[doku>teams:getting_involved|getting involved]] with DokuWiki.
+当然，如果你能[[doku>teams:getting_involved|加入DokuWiki]]我们会更高兴。
