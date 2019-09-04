@@ -718,8 +718,8 @@ function utf8_encodeFN($file,$safe=true){
         return SafeFN::encode($file);
     }
 
-    $file = urlencode($file);
-    $file = str_replace('%2F','/',$file);
+    // $file = urlencode($file);
+    // $file = str_replace('%2F','/',$file);
     return $file;
 }
 
@@ -742,7 +742,8 @@ function utf8_decodeFN($file){
         return SafeFN::decode($file);
     }
 
-    return urldecode($file);
+    // return urldecode($file);
+    return $file
 }
 
 /**
