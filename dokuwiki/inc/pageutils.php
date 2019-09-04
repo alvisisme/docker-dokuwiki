@@ -743,7 +743,7 @@ function utf8_decodeFN($file){
     }
 
     // return urldecode($file);
-    return $file
+    return $file;
 }
 
 /**

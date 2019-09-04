@@ -24,6 +24,9 @@ RUN apt-get update \
 #     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
 #     && chmod 755 /app
 
+RUN sed -i "s/\/var\/www\/html/\/var\/www\/html\/dokuwiki/g" /etc/apache2/sites-available/000-default.conf && \
+    sed -i "s/\/var\/www\/html/\/var\/www\/html\/dokuwiki/g" /etc/apache2/sites-available/default-ssl.conf
+
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY dokuwiki dokuwiki 
 COPY setup.sh setup.sh
