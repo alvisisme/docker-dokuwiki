@@ -11,7 +11,7 @@ RUN apt-get update \
         php-mbstring \
         php-gd \
         ca-certificates \
-	net-tools \
+        net-tools \
         wget \
         unzip \
         curl \
