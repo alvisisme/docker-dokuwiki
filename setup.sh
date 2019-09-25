@@ -5,6 +5,7 @@ if [ ! -d /var/www/html/dokuwiki ];then
 fi
 
 chown -R www-data /var/www/html
+rm -f /run/apache2/apache2.pid
 
 if [ `ps -ef | grep apache2 | grep -v apache2 | wc -l` -eq 0 ];then
     apache2ctl -D FOREGROUND
