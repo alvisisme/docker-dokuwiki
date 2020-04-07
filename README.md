@@ -5,6 +5,7 @@
 ## 如何使用
 
 ```shell
+make build
 docker-compose up -d
 ```
 
