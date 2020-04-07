@@ -1,36 +1,45 @@
-FROM alvisisme/ubuntu:16.04
-LABEL maintainer="Alvis Zhao<alvisisme@163.com>"
+FROM alvisisme/ubuntu:18.04
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        apache2 \
-        php7.0 \
-        libapache2-mod-php7.0 \
-        php7.0-xml \
-        php-mcrypt \
-        php-mbstring \
-        php-gd \
-        ca-certificates \
-        net-tools \
-        wget \
-        unzip \
-        curl \
-        patch \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends \
+    ca-certificates \
+    net-tools \
+    wget \
+    unzip \
+    curl \
+    patch \
+    supervisor \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN echo "exit 0" > /usr/sbin/policy-rc.d
+
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends \
+    nginx \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends \
+    php7.2 \
+    php7.2-fpm \
+    php7.2-xml \
+    php7.2-mbstring \
+    php7.2-gd \
+    php7.2-ldap \
+    php7.2-curl \
+    php7.2-json \
+    php7.2-zip \
+  && rm -rf /var/lib/apt/lists/*
 
 # Add the user UID:1000, GID:1000, home at /app
 # RUN groupadd -r app -g 1000 \
 #     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
 #     && chmod 755 /app
 
-RUN sed -i "s/\/var\/www\/html/\/var\/www\/html\/dokuwiki/g" /etc/apache2/sites-available/000-default.conf && \
-    sed -i "s/\/var\/www\/html/\/var\/www\/html\/dokuwiki/g" /etc/apache2/sites-available/default-ssl.conf
+COPY default /etc/nginx/sites-available/default
+COPY dokuwiki.conf /etc/supervisor/conf.d/dokuwiki.conf
+COPY dokuwiki.tar.gz /dokuwiki.tar.gz
+COPY setup.sh /setup.sh
 
-COPY apache2.conf /etc/apache2/apache2.conf
-COPY dokuwiki dokuwiki 
-COPY setup.sh setup.sh
-
-EXPOSE 80
-VOLUME [ "/var/www/html" ]
-CMD [ "/bin/bash", "/setup.sh" ]
+# CMD ["/usr/bin/supervisord", "-n"]
+CMD /etc/init.d/php7.2-fpm restart && nginx -g "daemon off;"

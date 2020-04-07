@@ -66,3 +66,6 @@ docker-compose up -d
 * [Installation DokuWiki under Ubuntu](https://www.dokuwiki.org/install:ubuntu)
 * [Dokuwiki中文网](http://www.dokuwiki.com.cn/)
 * [Dukowiki实现本地文件中文命名](https://www.somnus.top/dukowiki-filename/)
+* [Supervisor with Docker: Lessons learned](https://advancedweb.hu/supervisor-with-docker-lessons-learned/)
+* [Installing Dokuwiki on Ubuntu 18.04 with Nginx](https://www.dokuwiki.org/install:ubuntu:ubuntu_18.04_nginx)
+* [How can I start php-fpm in a Docker container by default?](https://stackoverflow.com/questions/37313780/how-can-i-start-php-fpm-in-a-docker-container-by-default/37313908)

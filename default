@@ -1,0 +1,28 @@
+server {
+    listen 80;
+    root /var/www/dokuwiki;
+    index index.php index.html index.html;
+ 
+    location / { 
+        try_files $uri $uri/ @dokuwiki;
+    }
+ 
+    location @dokuwiki {
+        rewrite ^/_media/(.*) /lib/exe/fetch.php?media=$1 last;
+        rewrite ^/_detail/(.*) /lib/exe/detail.php?media=$1 last;
+        rewrite ^/_export/([^/]+)/(.*) /doku.php?do=export_$1&id=$2 last;
+        rewrite ^/(.*) /doku.php?id=$1&$args last;
+    }
+
+    location ~ /(data|conf|bin|inc|vendor)/ {
+      deny all;
+    }
+ 
+    location ~ \.php$ {
+        # Caution: be sure the php7.2-fpm.sock matches your version
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
