@@ -8,7 +8,6 @@ RUN apt-get update \
     unzip \
     curl \
     patch \
-    supervisor \
   && rm -rf /var/lib/apt/lists/*
 
 RUN echo "exit 0" > /usr/sbin/policy-rc.d
@@ -36,10 +35,13 @@ RUN apt-get update \
 #     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
 #     && chmod 755 /app
 
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+STOPSIGNAL SIGTERM
+
 COPY default /etc/nginx/sites-available/default
-COPY dokuwiki.conf /etc/supervisor/conf.d/dokuwiki.conf
 COPY dokuwiki.tar.gz /dokuwiki.tar.gz
 COPY setup.sh /setup.sh
 
-# CMD ["/usr/bin/supervisord", "-n"]
 CMD /etc/init.d/php7.2-fpm restart && nginx -g "daemon off;"
