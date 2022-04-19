@@ -1,12 +1,16 @@
 version: '2'
 services:
   dokuwiki:
-    build: .
-    image: dokuwiki
+    build:
+      context: .
+      args:
+        # 是否使用国内源加快构建速度
+        - APT_CHINA_MIRROR=true
+    image: alvisisme/dokuwiki:2018-04-22b
     restart: always
     container_name: dokuwiki
     ports:
-      - 9090:80
+      - ${DOKUWIKI_PORT}:80
     volumes:
-      - /mnt/data/wiki:/var/www/dokuwiki
-
+      - ./nginx/default /etc/nginx/sites-available/default
+      - ${DOKUWIKI_PATH}:/var/www/dokuwiki

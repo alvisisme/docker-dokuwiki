@@ -2,67 +2,55 @@
 
 本工程目标是搭建一个开箱即用的个人知识库系统。
 
+[个人知识库网站](http://wiki.alvisisme.site/)
+
 ## 如何使用
 
-```shell
-make build
-docker-compose up -d
-```
+1. 复制环境变量
 
-浏览器访问地址 http://ip:9090
+    ```bash
+    cp env.sample .env
+    ```
 
-根据部署方式修改访问的ip或者端口号
+    按照自己需求修改 **.env** 下的配置
 
-默认登录帐号密码
+2. 下载并需要安装的 `dokuwiki` 版本
 
-**admin:admin123456**
+    ```bash
+    make download
+    make clean
+    make build
+    ```
+
+3. 启动 `dokuwiki`
+
+    ```bash
+    docker-compose up -d
+    ```
+
+    启动成功后执行如下命令确保 dokuwiki 的拥有正确的读写权限
+
+    ```bash
+    docker exec -it dokuwiki chown -R www-data:www-data /var/www/dokuwiki
+    ```
+
+4. 访问并测试 `dokuwiki`
+
+    浏览器默认访问地址 `http://ip:9090`， 根据部署方式修改访问的ip或者端口号
+
+    默认登录帐号密码为 **admin:admin123456**
 
 ## 项目依赖
 
-* dokuwiki 2018-04-22b "Greebo"
+* dokuwiki "Greebo" 2018-04-22b 605944ec47cd5f822456c54c124df255
 
 ## 修订记录
 
-1. 移除多语言支持，仅保留中文和英文
-
-    删除 **dokuwiki/inc/lang** 对应目录。
-
-2. 新建中文页面时文件名直接保存为中文，不再进行转码
-
-    修改 **dokuwiki/inc/pageutils.php** 文件，
-
-    将 `utf8_encodeFN` 返回语句从
-
-    ```php
-    $file = urlencode($file);
-    $file = str_replace('%2F','/',$file);
-    return $file;
-    ```
-
-    改为了
-
-    ```php
-    return $file;
-    ```
-
-    将 `utf8_decodeFN` 返回语句从
-
-    ```php
-    return urldecode($file);
-    ```
-
-    改为了
-
-    ```php
-    return $file;
-    ```
-
-3. 修改了wiki的默认参数
-
-    对比 **dokuwiki/conf/dokuwiki.php**（全部的默认参数） 和 **dokuwiki/conf/local.php**（修改的定制参数）
+见 **patches** 目录下各个脚本注释
 
 ## 参考引用
 
+* [DokuWiki Archived Downloads](https://download.dokuwiki.org/archive)
 * [dokuwiki issues:Official dokuwiki docker image](https://github.com/splitbrain/dokuwiki/issues/1896)
 * [Installation DokuWiki under Ubuntu](https://www.dokuwiki.org/install:ubuntu)
 * [Dokuwiki中文网](http://www.dokuwiki.com.cn/)

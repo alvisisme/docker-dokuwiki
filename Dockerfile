@@ -1,4 +1,7 @@
-FROM alvisisme/ubuntu:18.04
+FROM ubuntu:18.04
+
+ARG APT_CHINA_MIRROR
+RUN if [ -n "$APT_CHINA_MIRROR" ]; then sed -i -E "s/(archive|security).ubuntu.com/mirrors.aliyun.com/g" /etc/apt/sources.list; fi
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends \
@@ -30,18 +33,9 @@ RUN apt-get update \
     php7.2-zip \
   && rm -rf /var/lib/apt/lists/*
 
-# Add the user UID:1000, GID:1000, home at /app
-# RUN groupadd -r app -g 1000 \
-#     && useradd -u 1000 -r -g app -m -d /app -s /sbin/nologin -c "App user" app \
-#     && chmod 755 /app
-
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 STOPSIGNAL SIGTERM
-
-COPY default /etc/nginx/sites-available/default
-COPY dokuwiki.tar.gz /dokuwiki.tar.gz
-COPY setup.sh /setup.sh
 
 CMD /etc/init.d/php7.2-fpm restart && nginx -g "daemon off;"
