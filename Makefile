@@ -5,7 +5,7 @@ all: build
 download:
 	mkdir -p .cache	
 	curl https://download.dokuwiki.org/src/dokuwiki/dokuwiki-${DOKUWIKI_VERSION}.tgz -o .cache/dokuwiki-${DOKUWIKI_VERSION}.tgz
-	md5sum .cache/dokuwiki-${DOKUWIKI_VERSION}.tgz -c download.md5sum
+	md5sum -c download.md5sum
 
 build:
 	mkdir -p data

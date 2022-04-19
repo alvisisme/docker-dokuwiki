@@ -11,5 +11,3 @@ rm -rf data/lib/plugins/authldap
 rm -rf data/lib/plugins/authmysql
 rm -rf data/lib/plugins/authpdo
 rm -rf data/lib/plugins/authpgsql
-
-tar xzf patches/04/move.tar.gz -C data/lib/plugins

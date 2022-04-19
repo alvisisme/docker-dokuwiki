@@ -12,5 +12,5 @@ services:
     ports:
       - ${DOKUWIKI_PORT}:80
     volumes:
-      - ./nginx/default /etc/nginx/sites-available/default
+      - ./nginx/default:/etc/nginx/sites-available/default
       - ${DOKUWIKI_PATH}:/var/www/dokuwiki
