@@ -1,4 +1,4 @@
-#  基于dokuwiki搭建的wiki知识库系统
+# 基于dokuwiki搭建的wiki知识库系统
 
 本工程目标是搭建一个开箱即用的个人知识库系统。
 
@@ -28,7 +28,7 @@
     docker-compose up -d
     ```
 
-    启动成功后执行如下命令确保 dokuwiki 的拥有正确的读写权限
+    启动成功后执行如下命令确保 dokuwiki 拥有正确的读写权限
 
     ```bash
     docker exec -it dokuwiki chown -R www-data:www-data /var/www/dokuwiki
