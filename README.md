@@ -44,6 +44,23 @@
 
 * dokuwiki "Greebo" 2018-04-22b 605944ec47cd5f822456c54c124df255
 
+## 备份和恢复
+
+备份命令样例
+
+```bash
+docker exec -u www-data -w /var/www/dokuwiki -it dokuwiki bash -c 'mkdir -p backups && tar czf backups/dokuwiki-`date +%Y%m%d%H%M%S`.tar.gz  --exclude=backups *'
+```
+
+恢复命令样例
+
+```bash
+tar xzf backups/dokuwiki-20220420154108.tar.gz -C dir-to-extract
+docker-compose start
+```
+
+`dir-to-extract` 目录和容器挂载的dokuwiki目录保持一致。
+
 ## 修订记录
 
 见 **patches** 目录下各个脚本注释

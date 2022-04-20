@@ -14,7 +14,7 @@ server {
         rewrite ^/(.*) /doku.php?id=$1&$args last;
     }
 
-    location ~ /(data|conf|bin|inc|vendor)/ {
+    location ~ /(data|conf|bin|inc|vendor|backups)/ {
       deny all;
     }
  
