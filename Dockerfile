@@ -38,4 +38,4 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 STOPSIGNAL SIGTERM
 
-CMD /etc/init.d/php7.2-fpm restart && nginx -g "daemon off;"
+CMD chown -R www-data:www-data /var/www/dokuwiki && /etc/init.d/php7.2-fpm restart && nginx -g "daemon off;"
